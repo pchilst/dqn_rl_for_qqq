@@ -13,9 +13,10 @@ This project explores the application of reinforcement learning models from stab
 ## Methodology
 1. Created a custom OpenAI Gym environment to define the trading action space
 2. Tested multiple reinforcement learning algorithms (PPO, A2C, DQN)
-3. Implemented rigorous validation to minimize overfitting
-4. Optimized hyperparameters based on backtesting performance
-5. Evaluated models using standard trading metrics (Sharpe ratio, drawdown, etc.)
+3. Optimized code so that models run as efficiently as possible, parallelizing on GPU
+4. Implemented rigorous validation to minimize overfitting
+5. Optimized hyperparameters based on backtesting performance
+6. Evaluated models using standard trading metrics (Sharpe ratio, drawdown, etc.)
 
 ## Results
 
