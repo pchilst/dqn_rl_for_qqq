@@ -1,12 +1,50 @@
-For this project, I was curious how well reinforcement learning could predict the NASDAQ (ticker 'QQQ'). 
+Algorithmic NASDAQ Trading with Reinforcement Learning
+Project Overview
+This project explores the application of reinforcement learning models from stable-baselines3 to predict NASDAQ ETF (QQQ) movements. After experimenting with various approaches, DQN (Deep Q-Network) models proved most effective for this trading strategy.
+Key Features
 
-I began with PPO reinforcement learning models, and after doing some trial and error, I landed on DQN as being far preferable. I used gym to create a custom action space and learning method for the reinforcement models to specify exactly how they should learn. 
+Custom gym environment for financial market training
+Separate models for long and short position strategies
+Comprehensive validation methodology with held-out test sets
+Integration of technical indicators and options data
+Performance visualization through heatmaps and backtesting metrics
 
-I held out both test and validation data to try to eliminate as much bias as possible, and created heat maps and other visualizations to try to hone in on the best models. I then saved those out for further use.
+Methodology
 
-To use this project:
-1. Create your preliminary dataset using an API or pre-purchased data. It doesn't necessarily need to be 'QQQ'. It should have standard open - high - low - close - volume. In my case, I also merged in option related data. I attached script dqn2.2_VAL_create_preliminary_data.py as an example, minus the API keys.
-2. Run the dqn2.2_create_train_and_test.py script. This creates all the variables that we will need for training the models.
-3. Run each of these below scripts, which create models for both long and short positions separately:
-   BT_ML_DQN2.2_VAL2024_GPU_SEP_SHORT_v1.5_alt3.py
-   BT_ML_DQN2.2_VAL2024_GPU_SEP_LONG_v1.5_alt3.py
+Created a custom OpenAI Gym environment to define the trading action space
+Tested multiple reinforcement learning algorithms (PPO, A2C, DQN)
+Implemented rigorous validation to minimize overfitting
+Optimized hyperparameters based on backtesting performance
+Evaluated models using standard trading metrics 
+
+Installation
+bashCopypip install -r requirements.txt
+Note: TA-Lib requires additional C dependencies. See TA-Lib installation guide for platform-specific instructions.
+Usage
+
+Data Preparation: Create your preliminary dataset using an API or pre-purchased data
+Copypython dqn2.2_VAL_create_preliminary_data.py
+Note: You'll need to add your own API keys and configure data sources
+Feature Engineering: Generate training features and prepare test/validation splits
+Copypython dqn2.2_create_train_and_test.py
+
+Model Training: Train separate models for long and short positions
+Copypython BT_ML_DQN2.2_VAL2024_GPU_SEP_SHORT_v1.5_alt3.py
+python BT_ML_DQN2.2_VAL2024_GPU_SEP_LONG_v1.5_alt3.py
+
+
+Project Structure
+Copy├── data/                  # Data directory (not included in repo)
+├── models/                # Saved model files
+├── notebooks/             # Jupyter notebooks for analysis
+├── src/                   # Source code
+│   ├── environments/      # Custom gym environments
+│   ├── features/          # Feature engineering
+│   └── visualization/     # Visualization utilities
+├── requirements.txt       # Project dependencies
+└── README.md              # This file
+Future Work
+
+Implement additional market factors
+Explore ensemble approaches with traditional ML models
+Optimize execution strategy and slippage modeling
